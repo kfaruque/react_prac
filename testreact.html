@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+   <div id="first"></div>
+    <script type="text/babel">
+        function Helloworld(props){
+            console.log(props)
+            return (
+                <div>
+                <h1>Hello {props.name}, Welcome to React World</h1>
+                <Another year={props.year}  />
+                </div>
+            );
+        }
+        function Another(props){
+            return (
+                <h4>Year {props.year}, is goting to be the Year of Achivment</h4>
+            );
+        }
+        ReactDOM.render(
+            <div>
+                < Helloworld name="Omar Faruque" year="2018" />
+                < Helloworld name="Robin" year={"2019"} />
+            </div>,
+            document.getElementById('first')
+        );
+    
+    </script>
+</body>
+</html>
