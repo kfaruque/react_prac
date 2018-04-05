@@ -14,8 +14,9 @@
             console.log(props)
             return (
                 <div>
-                <h1>Hello {props.name}, Welcome to React World</h1>
-                <Another year={props.year}  />
+                    <h1>Hello {props.name}, Welcome to React World</h1>
+                    <Another year={props.year} />
+                    <MyAgeClass age={props.age} location="Dhaka" />
                 </div>
             );
         }
@@ -24,10 +25,20 @@
                 <h4>Year {props.year}, is goting to be the Year of Achivment</h4>
             );
         }
+        class MyAgeClass extends React.Component{
+            render(){
+                var props = this.props
+                return(
+                    <h2>My Age : {props.age} <br/>
+                    My Location : {props.location}</h2>
+                );
+            }
+        }
+        
         ReactDOM.render(
             <div>
-                < Helloworld name="Omar Faruque" year="2018" />
-                < Helloworld name="Robin" year={"2019"} />
+                <Helloworld name="Omar Faruque" year="2018" age="45" />
+                < Helloworld name="Robin" year={"2019"} age="35" />
             </div>,
             document.getElementById('first')
         );
