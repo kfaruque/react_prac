@@ -6,6 +6,7 @@
     <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    <link rel="stylesheet" href="style.css">
     
 </head>
 <body>
@@ -22,18 +23,18 @@
             render(){
                 const props = this.props
                 return (
-                    <div>
+                    <div className="element">
                         <h2>{props.children}</h2>
                         <div>
                             <button className="edit" onClick={this.edit}>Edit</button>
-                            <button className="delete" onClick={this.edit} >Delete</button>
+                            <button className="delete" onClick={this.delete} >Delete</button>
                         </div>
                     </div>
                 );
             }
         }
         ReactDOM.render(
-            <div>
+            <div className="wrap">
                <HotNews>Mustafiz Plays Today in IPL</HotNews>
                <HotNews>Bayern win sixth title in a row</HotNews>
             </div>,
