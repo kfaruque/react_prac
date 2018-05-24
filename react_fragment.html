@@ -14,9 +14,7 @@
     <script type="text/babel">
         function Title(props){
             return (
-            <div>
                <p>{props.title} - {props.count}</p>
-            </div>
             )
         }
         class HotNews extends React.Component{
@@ -45,10 +43,10 @@
                         {!!totalCount && (<Title title={props.title} count={totalCount}/>)}
                         <h2>{props.children}</h2>
                         
-                        <div>
+                        <React.Fragment>
                             <button className="edit" onClick={()=>this.edit()}>Edit</button>
                             <button className="delete" onClick={()=>this.delete()} >Delete</button>
-                        </div>
+                        </React.Fragment>
                         {!!totalCount && (<p>Total Edit Click {totalCount}</p>)}
                         
                     </div>
