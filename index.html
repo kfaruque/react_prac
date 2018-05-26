@@ -1,30 +1,68 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Recact World</title>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>React Event Practice</title>
     <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
-  </head>
-  <body>
-    <div id="root"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+   <div id="news"></div>
     <script type="text/babel">
-    function Helloworld(props){
-        console.log(props)
-        return (
-            <div>
-            <h1>Hi, {props.name}!</h1>
-            <h1>My Age is {props.age}!</h1>
-            </div>
-            );
-    }
-      ReactDOM.render(
-        < Helloworld name="Omar Faruque" age="45"/>,
-        document.getElementById('root')
-      );
+        function Title(props){
+            return (
+               <p>{props.title} - {props.count}</p>
+            )
+        }
+        class HotNews extends React.Component{
+            constructor(props){
+                super(props);
+                this.state = {
+                    totalEditCount: 0
+                };
+            }
+            edit(){
+                alert("You Have Clicked the Edit Button");
+                this.setState({
+                   totalEditCount: this.state.totalEditCount + 1 
+                });
+                
+            }
+            delete(){
+                alert("You Have Clicked the Delete Button");
+            }
+            render(){
+                const props = this.props
+                const totalCount = this.state.totalEditCount
+                return (
+                    <div className="element">
 
+                        {!!totalCount && (<Title title={props.title} count={totalCount}/>)}
+                        <h2>{props.children}</h2>
+                        
+                        <React.Fragment>
+                            <button className="edit" onClick={()=>this.edit()}>Edit</button>
+                            <button className="delete" onClick={()=>this.delete()} >Delete</button>
+                        </React.Fragment>
+                        {!!totalCount && (<p>Total Edit Click {totalCount}</p>)}
+                        
+                    </div>
+                );
+            }
+        }
+        ReactDOM.render(
+            <div className="wrap">
+               <HotNews title="Mustafiz">Mustafiz Plays Today in IPL</HotNews>
+               <HotNews title="Bayern">Bayern win sixth title in a row</HotNews>
+            </div>,
+            document.getElementById("news")
+        );
+    
+    
     </script>
-
-  </body>
+    
+</body>
 </html>
